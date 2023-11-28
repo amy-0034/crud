@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+    <style>
+body {
+  color: #70716F;
+  font-weight: 300;
+  font-family: "Abel", sans-serif;
+  background-color: white;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/500163/registration-mark--light.svg);
+  background-repeat: no-repeat;
+  background-position: center 2rem;
+  background-size: contain;
+}
+
+a {
+  color: #333333;
+  text-decoration: none;
+  position: relative;
+}
+a:before {
+  content: "";
+  background-color: rgba(22, 144, 179, 0.2);
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+a:hover {
+  color: #137e9c;
+}
+a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 1rem;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-areas: "id" "statement" "connect" "experience" "skills";
+}
+@media (min-width: 601px) {
+  .wrap {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "id        id         id        " "statement statement  connect   " "skills    experience experience";
+  }
+}
+@media (min-width: 761px) {
+  .wrap {
+    margin: 2rem;
+    grid-template-areas: "statement statement  connect   " "id        id         connect   " "skills    experience experience";
+  }
+}
+@media (min-width: 1021px) {
+  .wrap {
+    margin: 2rem auto;
+    padding: 2rem;
+    grid-gap: 2rem;
+  }
+}
+
+.id {
+  grid-area: id;
+}
+
+.connect {
+  grid-area: connect;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+.connect li {
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 2rem;
+  min-height: 2rem;
+  margin: 0.5rem 0;
+  padding-left: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 761px) {
+  .connect li {
+    margin: 1rem 0;
+  }
+}
+.connect li#connect__address {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/500163/resume-icon--home.png);
+}
+.connect li#connect__phone {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/500163/resume-icon--phone.png);
+}
+.connect li#connect__email {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/500163/resume-icon--email.png);
+}
+.connect li#connect__behance {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/500163/resume-icon--behance.png);
+}
+.connect li#connect__linkedin {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/500163/resume-icon--linkedin.png);
+}
+
+.statement {
+  grid-area: statement;
+}
+@media (min-width: 1021px) {
+  .statement {
+    padding-left: 7.5rem;
+  }
+}
+
+.experience {
+  grid-area: experience;
+}
+.experience ul li {
+  margin: 1rem 0;
+  display: grid;
+}
+@media (min-width: 761px) {
+  .experience ul li {
+    grid-template-columns: 22ch 1fr;
+  }
+  .experience ul li h4, .experience ul li h5, .experience ul li p {
+    grid-column: 2/3;
+  }
+  .experience ul li h6 {
+    grid-column: 1/2;
+    grid-row: 1;
+  }
+}
+@media (min-width: 1021px) {
+  .experience ul li {
+    grid-template-columns: 25ch 1fr;
+  }
+}
+
+.skills {
+  grid-area: skills;
+}
+.skills ul {
+  margin-bottom: 2rem;
+}
+.skills ul li {
+  margin: 1rem 0;
+}
+.skills .skills__web li,
+.skills .skills__graphic li {
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 4rem;
+  min-height: 4rem;
+  padding-left: 5rem;
+  display: flex;
+  align-items: center;
+}
+h1 {
+  color: #1690B3;
+  font-weight: 700;
+  font-size: 14vw;
+  font-family: "Montserrat", sans-serif;
+}
+@media (min-width: 421px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+@media (min-width: 601px) {
+  h1 {
+    font-size: 9.8vw;
+  }
+}
+@media (min-width: 761px) {
+  h1 {
+    font-size: 6.2vw;
+  }
+}
+@media (min-width: 1021px) {
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+  }
+}
+
+h2 {
+  color: #333333;
+  font-size: 8vw;
+  margin: 0.5rem 0;
+}
+@media (min-width: 601px) {
+  h2 {
+    font-size: 6vw;
+  }
+}
+@media (min-width: 761px) {
+  h2 {
+    font-size: 4vw;
+    text-align: right;
+  }
+}
+@media (min-width: 1021px) {
+  h2 {
+    font-size: 2.75rem;
+  }
+}
+
+h3 {
+  color: #ED5E11;
+  font-weight: 700;
+  font-size: 1.75rem;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 1rem;
+}
+@media (min-width: 1021px) {
+  h3 {
+    font-size: 2rem;
+  }
+}
+
+h4 {
+  color: #1690B3;
+  font-weight: 700;
+  font-size: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 0.25rem;
+}
+@media (min-width: 1021px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+h5 {
+  color: #333333;
+  font-size: 1.125rem;
+}
+@media (min-width: 1021px) {
+  h5 {
+    font-size: 1.25rem;
+  }
+}
+
+h6 {
+  color: #8AAAB3;
+  font-weight: 700;
+  font-size: 1.125rem;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 0.75rem;
+}
+@media (min-width: 761px) {
+  h6 {
+    font-size: 1.25rem;
+    text-align: right;
+    margin: 0;
+    padding-right: 2.25rem;
+    position: relative;
+  }
+  h6:after {
+    content: "•";
+    color: #ED5E11;
+    font-size: 3rem;
+    line-height: 1;
+    padding: 0 0.5rem;
+    position: absolute;
+    top: -1rem;
+    right: 0;
+  }
+}
+@media (min-width: 1021px) {
+  h6 {
+    font-size: 1.5rem;
+  }
+}
+
+p {
+  line-height: 1.5;
+}
+@media (min-width: 1021px) {
+  p {
+    font-size: 1.125rem;
+  }
+}
+p.statement {
+  color: #6b949f;
+}
+
+@media (min-width: 761px) {
+  .experience h3 {
+    text-indent: calc( 9ch + .5rem );
+  }
+}
+.experience p {
+  font-family: "Kreon", serif;
+  margin: 0.5rem 0;
+}
+
+.connect,
+.skills {
+  color: #333333;
+}
+.connect strong,
+.skills strong {
+  color: #1690B3;
+}
+
+.skills__web, .skills__graphic {
+  font-size: 1.25rem;
+}
+@media (min-width: 1021px) {
+  .skills__web, .skills__graphic {
+    font-size: 1.5rem;
+  }
+}
+
+.skills__etc {
+  color: #70716F;
+}
+@media (min-width: 1021px) {
+  .skills__etc {
+    font-size: 1.125rem;
+  }
+}
+    </style>
+</head>
+<body>
+	<div class="wrap">
+
+		<div class="id">
+			<h1>David Jakubowski</h1>
+			<h2>Web, graphic, UI + UX design</h2>
+		</div> <!-- /.titles -->
+		
+		<p class="statement">All my adult life I’ve been finding creative solutions for visual and technological problems. I have a solid background of art fundamentals and over twenty years of experience in multimedia development. This makes me uniquely comfortable designing for both screen and print. Currently, my focus is trained on creating great user experiences via well-constructed user interfaces for web-based deliverables, supported by my strong brand identity skills. Ultimately, my passion is in advocating for the user and my talents are best utilized when allowed to problem-solve through that prism.</p> <!-- /.statement -->
+	
+		<ul class="connect">
+			<li id="connect__address">4929 Sanford Drive<br />Sterling Heights, MI 48310</li>
+			<li id="connect__phone">248.790.6317</li>
+			<li id="connect__email"><a href="mailto:tucogovinda@mac.com?subject=Message%20from%20CodePen%20Resume">tucogovinda@mac.com</a></li>
+			<li id="connect__behance"><a href="http://www.behance.net/tucogovinda" target="_blank">View portfolio on Behance</a></li>
+			<li id="connect__linkedin"><a href="http://www.linkedin.com/in/david-jakubowski" target="_blank">View this resume on LinkedIn</a></li>
+		</ul> <!-- /.connect -->
+		
+		<div class="experience">
+			<h3>Experience</h3>
+			<ul>
+				<li>
+					<h4>Web and Graphic Designer</h4>
+					<h5>Conference Technologies, Inc.</h5>
+					<h6>4/17–3/20</h6>
+					<p>Member of corporate marketing team. Responsible for corporate identity, marketing materials and other art for digital and print deliverables. Provide user experience direction through wireframes and prototypes for internal as well as customer-facing websites and applications. Ensure corporate graphic standards are met, create and/or edit digital media assets and provide interactive media elements as necessary.</p>
+				</li>
+				<li>
+					<h4>Web and Graphic Designer</h4>
+					<h5>LearnCom / TVS Communication Solutions</h5>
+					<h6>9/05–4/17</h6>
+					<p>Responsible for overall user experience and all visual aspects of eLearning courseware and custom learning management systems. Design user interfaces, ensure corporate graphic standards are met, create and/or edit digital media assets and provide interactive media elements as necessary. Additionally, provide art for both print and web in a wide variety of applications, including: web design (HTML5 & CSS3), corporate identity, marketing materials (print & digital) and art for use in video production.</p>
+				</li>
+				<li>
+					<h4>Graphic Designer</h4>
+					<h5>Analysts International Corporation</h5>
+					<h6>7/00–9/05</h6>
+					<p>Primarily responsible for web site design, though also responsible for the occasional print piece. In addition to web sites, designed corporate intranet sites, training CD-ROMs and contributed art for marketing materials such as posters, cut-sheets, web graphics and Flash animations.</p>
+				</li>
+				<li>
+					<h4>Graphics Technician</h4>
+					<h5>Colorquik Graphix</h5>
+					<h6>11/98–7/00</h6>
+					<p>Responsible for all areas of production for original and customer-supplied art at a small, demand-printing service bureau. Designed brochures, posters, etc. in addition to troubleshooting files, color-correcting images, operating large-format inkjet plotters and handling digital laser copiers and their R.I.P.s. Among other things, this experience taught me how to properly handle digital art files from creation to output.</p>
+				</li>
+			</ul>
+			<h3>Education</h3>
+			<ul>
+				<li>
+					<h4>Bachelor of Fine Arts, Graphic Design</h4>
+					<h5>Alma College – Alma, MI</h5>
+					<h6>94–98</h6>
+					<p>Graduated with honors in art department. Received Pamela Temple/Marjorie Brown Award for Alma College outstanding junior art major. Recipient of McGreggor Fund Grant to write, direct and perform performance art piece. English minor.</p>
+				</li>
+			</ul>
+		</div> <!-- /.experience -->
+	
+		<div class="skills">
+			<h3>Web skills</h3>
+			<ul class="skills__web">
+				<li id="skills__html5">HTML5</li>
+				<li id="skills__css3">CSS3 + SCSS</li>
+				<li id="skills__xd">Adobe XD</li>
+			</ul>
+			<h3>Graphic skills</h3>
+			<ul class="skills__graphic">
+				<li id="skills__ps">Adobe Photoshop</li>
+				<li id="skills__ai">Adobe Illustrator</li>
+				<li id="skills__id">Adobe InDesign</li>
+				<li id="skills__acrobat">Adobe Acrobat</li>
+			</ul>
+			<h3>Etcetera</h3>
+			<ul class="skills__etc">
+				<li>Expertise with macOS and iOS.</li>
+				<li>Experience with Tumult Hype, Adobe Dreamweaver and Microsoft Office.</li>
+				<li>Eagle Scout, USA Softball Umpire, baseball fanatic and occasional kayaker.</li>
+				<li><strong>References available upon request.</strong></li>
+			</ul>
+		</div> <!-- /.skills -->
+		
+	</div> <!-- /.wrap -->
+</body>
+</html>
