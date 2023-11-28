@@ -60,7 +60,7 @@ function Create() {
     }
     
   return (
-    <>
+    <div>
     <Link style={{textDecoration: 'none', color: 'inherit'}} to="/read"><Button variant='contained' color='primary'>View Contacts</Button></Link>
     <form onSubmit={PostData} className={classes.formStyle}>
         <FormLabel component="legend">Create New Contact</FormLabel>
@@ -79,7 +79,7 @@ function Create() {
         <FormControlLabel className={classes.formControlLabel} control={<Checkbox value={toggle}/>} onChange={Checked} label={<Typography className={classes.formControlLabel}>Add to Favorites</Typography>} /><br/>
         <Button type='submit' variant='contained' color='secondary' className={classes.myBtn} onClick={PostData}><Link style={{textDecoration: 'none', color: 'inherit'}} to='/read'>Submit</Link></Button>
     </form>
-    </>
+    </div>
   )
 }
 
